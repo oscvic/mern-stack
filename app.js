@@ -3,7 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-
+//{ DB } = require('./config/db'),
 var book = require('./routes/book');
 var app = express();
 
