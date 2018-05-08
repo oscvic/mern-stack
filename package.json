@@ -1,6 +1,7 @@
 {
   "name": "mern-stack",
   "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
