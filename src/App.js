@@ -20,6 +20,15 @@ class App extends Component {
       });
   }
 
+  delete(id){
+    axios.delete('/api/book/'+id)
+      .then((result) => {
+        let idx = this.state.books.findIndex(x => x._id === id)
+        this.state.books.splice(idx, 1);
+        this.props.history.push("/")
+      });
+  }
+
   render() {
     return (
       <div class="container">
@@ -37,6 +46,7 @@ class App extends Component {
                   <th>ISBN</th>
                   <th>Title</th>
                   <th>Author</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -45,6 +55,10 @@ class App extends Component {
                     <td><Link to={`/show/${book._id}`}>{book.isbn}</Link></td>
                     <td>{book.title}</td>
                     <td>{book.author}</td>
+                    <td>
+                    <Link to={`/edit/${book._id}`} class="btn btn-success">Edit</Link>&nbsp;
+                    <button onClick={this.delete.bind(this, book._id)} class="btn btn-danger">Delete</button>
+                    </td>
                   </tr>
                 )}
               </tbody>
